@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Laaviii 🌹</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --rose:#c8637a;--rose2:#e8527a;--rose-light:#e8a0b0;--rose-pale:#f9eef1;
+  --rose-deep:#7a2840;--gold:#d4a843;--gold2:#f0c060;--cream:#0d0508;
+  --dark:#fff;--glass:rgba(255,255,255,0.06);--glass-border:rgba(255,255,255,0.12);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#0d0508;color:#fff;overflow-x:hidden;cursor:none}
+
+@media (pointer: coarse) {
+  body { cursor: auto; }
+  #cur, #cur2 { display: none; }
+}
+
+/* ══ PREMIUM CURSOR ══ */
+#cur{width:8px;height:8px;background:#fff;border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .15s,height .15s,background .2s}
+#cur2{width:32px;height:32px;border:1px solid rgba(255,255,255,0.5);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .1s,top .1s,width .3s,height .3s,border-color .3s}
+body:hover #cur{background:var(--rose-light)}
+body:hover #cur2{border-color:var(--rose-light)}
+
+/* ══ PARTICLE CANVAS ══ */
+#particles{position:fixed;inset:0;pointer-events:none;z-index:0}
+
+/* ══ CLICK BURST ══ */
+.burst{position:fixed;pointer-events:none;z-index:9997;transform:translate(-50%,-50%)}
+.burst svg{animation:burstAnim .8s ease forwards}
+@keyframes burstAnim{0%{transform:scale(0) rotate(0deg);opacity:1}60%{transform:scale(1.4) rotate(20deg);opacity:1}100%{transform:scale(0.8) rotate(-10deg);opacity:0}}
+
+/* ══ INTRO ══ */
+#intro{
+  position:fixed;inset:0;z-index:8000;
+  background:radial-gradient(ellipse at 50% 40%, #3a0a18 0%, #0d0508 70%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  transition:opacity 1.2s cubic-bezier(.4,0,.2,1),visibility 1.2s
+}
+#intro.gone{opacity:0;visibility:hidden;pointer-events:none}
+.intro-3d-rose{width:140px;height:140px;margin:0 auto 32px;animation:roseFloat 3s ease-in-out infinite}
+@keyframes roseFloat{0%,100%{transform:translateY(0) rotateY(0deg)}50%{transform:translateY(-16px) rotateY(20deg)}}
+.intro-h{font-family:'Playfair Display',serif;font-size:clamp(44px,10vw,90px);font-weight:900;
+  background:linear-gradient(135deg,#f9c8d5,#e8527a,#d4a843);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  line-height:1.1;margin-bottom:12px}
+.intro-s{font-family:'Inter',sans-serif;font-size:15px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:44px}
+.intro-cta{
+  position:relative;padding:16px 56px;border:none;border-radius:60px;
+  background:linear-gradient(135deg,#c8637a,#8b2040);
+  color:#fff;font-family:'Inter',sans-serif;font-size:12px;letter-spacing:4px;text-transform:uppercase;cursor:pointer;
+  box-shadow:0 0 40px rgba(200,99,122,0.5),0 0 80px rgba(200,99,122,0.2);
+  transition:all .3s;overflow:hidden
+}
+.intro-cta::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.2),transparent);opacity:0;transition:opacity .3s}
+.intro-cta:hover{transform:scale(1.06);box-shadow:0 0 60px rgba(200,99,122,0.7)}
+.intro-cta:hover::before{opacity:1}
+.intro-cta:active{transform:scale(0.97)}
+
+/* ══ AUDIO TOGGLE ══ */
+#musicToggle{
+  position:fixed;bottom:24px;right:24px;z-index:9000;
+  background:rgba(13,5,8,0.75);border:1px solid rgba(255,255,255,0.2);
+  backdrop-filter:blur(10px);color:#fff;border-radius:50px;
+  padding:10px 20px;font-size:11px;letter-spacing:2px;cursor:pointer;
+  display:flex;align-items:center;gap:8px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.5);transition:all 0.3s;
+  text-transform:uppercase;font-family:'Inter',sans-serif
+}
+#musicToggle:hover{background:var(--rose);border-color:var(--rose);transform:scale(1.05)}
+
+/* ══ NAV ══ */
+nav{
+  position:fixed;top:0;width:100%;z-index:500;
+  padding:20px 48px;display:flex;justify-content:space-between;align-items:center;
+  background:rgba(13,5,8,0.6);backdrop-filter:blur(24px);
+  border-bottom:1px solid rgba(255,255,255,0.06)
+}
+.nav-logo{font-family:'Playfair Display',serif;font-size:18px;font-style:italic;
+  background:linear-gradient(135deg,#f9c8d5,#d4a843);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;gap:32px}
+nav a{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.5);text-decoration:none;transition:color .3s,transform .3s;display:inline-block}
+nav a:hover{color:#fff;transform:translateY(-2px)}
+
+/* ══ HERO ══ */
+#hero{
+  min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  position:relative;text-align:center;padding:120px 20px 60px;overflow:hidden
+}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 60%,rgba(139,32,64,0.35) 0%,transparent 65%)}
+.hero-eyebrow{font-size:10px;letter-spacing:6px;text-transform:uppercase;color:var(--gold);margin-bottom:28px;animation:fadeUp .8s ease both}
+.hero-title{
+  font-family:'Playfair Display',serif;font-weight:900;
+  font-size:clamp(52px,11vw,130px);line-height:1.0;
+  animation:fadeUp .8s .15s ease both;position:relative;z-index:1
+}
+.hero-title .line1{color:#fff}
+.hero-title .line2{
+  font-style:italic;
+  background:linear-gradient(135deg,#f9c8d5 0%,#e8527a 40%,#d4a843 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  display:block;animation:shimmer 4s linear infinite;background-size:200% auto
+}
+@keyframes shimmer{0%{background-position:0% center}100%{background-position:200% center}}
+.hero-name{
+  font-family:'Dancing Script',cursive;font-size:clamp(44px,9vw,100px);
+  color:#fff;display:block;animation:fadeUp .8s .3s ease both,nameGlow 3s ease infinite;
+  text-shadow:0 0 40px rgba(232,80,122,0.6)
+}
+@keyframes nameGlow{0%,100%{text-shadow:0 0 40px rgba(232,80,122,0.4)}50%{text-shadow:0 0 80px rgba(232,80,122,0.9),0 0 120px rgba(212,168,67,0.4)}}
+.hero-3d-icons{display:flex;gap:24px;justify-content:center;margin:32px 0;animation:fadeUp .8s .45s ease both}
+.icon3d{width:64px;height:64px;animation:float3d 3s ease-in-out infinite;filter:drop-shadow(0 8px 24px rgba(200,99,122,0.5))}
+.icon3d:nth-child(2){animation-delay:.5s}
+.icon3d:nth-child(3){animation-delay:1s}
+@keyframes float3d{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-12px) rotate(3deg)}}
+.hero-sub{font-size:clamp(15px,2.5vw,20px);color:rgba(255,255,255,0.55);font-style:italic;font-family:'Playfair Display',serif;max-width:560px;line-height:1.8;animation:fadeUp .8s .6s ease both}
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;color:rgba(255,255,255,0.3);font-size:9px;letter-spacing:4px;text-transform:uppercase;animation:fadeIn 2s 2s both}
+.hero-scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,rgba(255,255,255,0.4),transparent);animation:scrollPulse 2s ease infinite}
+@keyframes scrollPulse{0%,100%{transform:scaleY(0);transform-origin:top;opacity:0}50%{transform:scaleY(1);transform-origin:top;opacity:1}}
+
+/* ══ SECTION BASE ══ */
+.section-tag{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;opacity:0.8}
+.section-h{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(32px,5vw,60px);line-height:1.1;margin-bottom:20px}
+
+/* ══ COUNTDOWN ══ */
+#countdown{
+  padding:100px 20px;text-align:center;position:relative;overflow:hidden;
+  background:linear-gradient(160deg,#1a0510 0%,#0d0508 50%,#1a0510 100%)
+}
+.cd-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;
+  background:radial-gradient(circle,rgba(139,32,64,0.2),transparent 70%);pointer-events:none}
+.cd-grid{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;position:relative;z-index:1}
+.cd-box{
+  min-width:120px;padding:28px 24px;
+  background:var(--glass);border:1px solid var(--glass-border);border-radius:20px;
+  backdrop-filter:blur(20px);position:relative;overflow:hidden;
+  transition:transform .3s,box-shadow .3s
+}
+.cd-box::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.08),transparent 60%)}
+.cd-box:hover{transform:translateY(-8px) scale(1.04);box-shadow:0 24px 60px rgba(200,99,122,0.25)}
+.cd-num{
+  font-family:'Playfair Display',serif;font-size:64px;font-weight:900;line-height:1;
+  background:linear-gradient(135deg,#fff,#f9c8d5,#e8a0b0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cd-num.bump{animation:numFlip .4s ease}
+@keyframes numFlip{0%{transform:rotateX(90deg);opacity:0}100%{transform:rotateX(0deg);opacity:1}}
+.cd-lbl{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:8px}
+.cd-sep{font-family:'Playfair Display',serif;font-size:48px;color:rgba(255,255,255,0.2);align-self:center}
+.bday-msg{margin-top:40px;font-family:'Dancing Script',cursive;font-size:36px;
+  background:linear-gradient(135deg,#f9c8d5,#d4a843);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  display:none;animation:fadeUp .8s ease both}
+
+/* ══ GALLERY (4 PICS BALANCED GRID) ══ */
+#gallery{padding:100px 40px;max-width:1000px;margin:0 auto;text-align:center;position:relative}
+.gal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:56px}
+.gal-item{
+  position:relative;overflow:hidden;border-radius:20px;cursor:pointer;aspect-ratio:4/3;
+  background:var(--glass);border:1px solid var(--glass-border);
+  transition:transform .4s cubic-bezier(.175,.885,.32,1.275),box-shadow .4s
+}
+.gal-item:hover{transform:scale(1.03) translateY(-4px);box-shadow:0 32px 64px rgba(200,99,122,0.3);z-index:2}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;display:block}
+.gal-item:hover img{transform:scale(1.08)}
+.gal-ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  background:linear-gradient(135deg,rgba(200,99,122,0.1),rgba(139,32,64,0.2))}
+.gal-ph-icon{width:40px;height:40px;opacity:0.4}
+.gal-ph-txt{font-size:12px;letter-spacing:1px;color:rgba(255,255,255,0.4);text-align:center}
+.gal-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(139,32,64,0.85) 0%,transparent 60%);opacity:0;transition:opacity .4s;display:flex;align-items:flex-end;padding:24px}
+.gal-item:hover .gal-overlay{opacity:1}
+.gal-cap{font-family:'Playfair Display',serif;font-style:italic;color:#fff;font-size:18px;transform:translateY(8px);transition:transform .4s}
+.gal-item:hover .gal-cap{transform:translateY(0)}
+
+/* ══ LIGHTBOX ══ */
+#lb{position:fixed;inset:0;background:rgba(0,0,0,0.95);backdrop-filter:blur(20px);z-index:2000;display:none;align-items:center;justify-content:center}
+#lb.open{display:flex;animation:fadeIn .3s ease}
+#lb img{max-width:90vw;max-height:90vh;border-radius:12px;animation:scaleIn .3s cubic-bezier(.175,.885,.32,1.275)}
+@keyframes scaleIn{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
+.lb-close{position:absolute;top:24px;right:32px;color:rgba(255,255,255,0.6);font-size:28px;cursor:pointer;background:none;border:none;transition:color .2s,transform .3s}
+.lb-close:hover{color:#fff;transform:rotate(90deg) scale(1.2)}
+
+/* ══ LETTER ══ */
+#letter{
+  padding:100px 20px;
+  background:radial-gradient(ellipse at 30% 50%,rgba(139,32,64,0.15),transparent 60%),#0d0508
+}
+.letter-wrap{max-width:700px;margin:0 auto;text-align:center}
+.letter-card{
+  margin-top:48px;padding:64px 52px;
+  background:linear-gradient(135deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));
+  border:1px solid rgba(255,255,255,0.1);border-radius:24px;
+  backdrop-filter:blur(20px);position:relative;
+  box-shadow:0 32px 80px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.08)
+}
+.letter-card::before{content:'❝';position:absolute;top:-20px;left:50%;transform:translateX(-50%);
+  font-size:56px;line-height:1;
+  background:linear-gradient(135deg,#e8527a,#d4a843);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.letter-body{font-family:'Playfair Display',serif;font-size:20px;font-weight:400;line-height:2;color:rgba(255,255,255,0.8);text-align:left}
+.letter-body p{margin-bottom:20px}
+.letter-sig{margin-top:32px;font-family:'Dancing Script',cursive;font-size:30px;
+  background:linear-gradient(135deg,#f9c8d5,#e8527a,#d4a843);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  text-align:right}
+.edit-btn{position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:20px;padding:7px 18px;font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.6);cursor:pointer;text-transform:uppercase;transition:all .2s}
+.edit-btn:hover{background:var(--rose);border-color:var(--rose);color:#fff}
+.letter-ta{width:100%;font-family:'Playfair Display',serif;font-size:18px;line-height:2;color:#fff;background:rgba(255,255,255,0.04);border:1px dashed rgba(255,255,255,0.2);border-radius:12px;padding:16px;resize:vertical;min-height:220px;outline:none;display:none}
+.save-btn{margin-top:12px;padding:10px 28px;background:var(--rose);color:#fff;border:none;border-radius:20px;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;display:none;transition:all .2s}
+.save-btn:hover{background:#a02050;transform:scale(1.04)}
+
+/* ══ REASONS ══ */
+#reasons{padding:100px 40px;max-width:1100px;margin:0 auto;text-align:center}
+.reasons-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:56px;text-align:left}
+.r-card{
+  background:var(--glass);border:1px solid var(--glass-border);border-radius:20px;
+  padding:36px 32px;position:relative;overflow:hidden;cursor:default;
+  transition:all .4s cubic-bezier(.175,.885,.32,1.275);
+  display:flex;flex-direction:column;justify-content:flex-start
+}
+.r-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(200,99,122,0.8),rgba(139,32,64,0.9));opacity:0;transition:opacity .4s;z-index:0}
+.r-card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 24px 60px rgba(200,99,122,0.3)}
+.r-card:hover::before{opacity:1}
+.r-num{font-family:'Playfair Display',serif;font-size:52px;font-weight:900;line-height:1;margin-bottom:12px;position:relative;z-index:1;
+  background:linear-gradient(135deg,rgba(249,200,213,0.3),rgba(212,168,67,0.2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  transition:all .4s}
+.r-card:hover .r-num{background:linear-gradient(135deg,rgba(255,255,255,0.25),rgba(255,255,255,0.1));-webkit-background-clip:text;background-clip:text}
+.r-title-custom{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--rose-light);margin-bottom:8px;position:relative;z-index:1;transition:color .4s}
+.r-card:hover .r-title-custom{color:var(--gold2)}
+.r-txt{font-family:'Inter',sans-serif;font-size:15px;line-height:1.7;color:rgba(255,255,255,0.75);position:relative;z-index:1;transition:color .4s}
+.r-card:hover .r-txt{color:#fff}
+
+/* ══ WISHES ══ */
+#wishes{
+  padding:100px 20px;text-align:center;position:relative;overflow:hidden;
+  background:radial-gradient(ellipse at 70% 50%,rgba(139,32,64,0.2),transparent 60%),#0d0508
+}
+.wishes-card{
+  max-width:740px;margin:48px auto 0;
+  background:linear-gradient(135deg,rgba(200,99,122,0.1),rgba(139,32,64,0.15));
+  border:1px solid rgba(200,99,122,0.25);border-radius:28px;
+  padding:56px 48px;position:relative;overflow:hidden;
+  box-shadow:0 0 80px rgba(139,32,64,0.3),inset 0 1px 0 rgba(255,255,255,0.08)
+}
+.wishes-cake{width:100px;height:100px;margin:0 auto 24px;animation:cakeFloat 3s ease-in-out infinite}
+@keyframes cakeFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-12px) scale(1.05)}}
+.wishes-txt{font-family:'Playfair Display',serif;font-size:clamp(20px,3vw,28px);font-style:italic;line-height:1.7;color:rgba(255,255,255,0.85)}
+.wishes-from{margin-top:28px;font-family:'Dancing Script',cursive;font-size:28px;
+  background:linear-gradient(135deg,#f9c8d5,#d4a843);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.wishes-icons{display:flex;justify-content:center;gap:16px;margin-top:28px;flex-wrap:wrap}
+.w-icon{width:48px;height:48px;animation:wIconFloat 2.5s ease-in-out infinite;filter:drop-shadow(0 4px 16px rgba(200,99,122,0.5))}
+.w-icon:nth-child(2){animation-delay:.3s}
+.w-icon:nth-child(3){animation-delay:.6s}
+.w-icon:nth-child(4){animation-delay:.9s}
+.w-icon:nth-child(5){animation-delay:1.2s}
+@keyframes wIconFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* ══ FOOTER ══ */
+footer{padding:72px 20px;text-align:center;border-top:1px solid rgba(255,255,255,0.06)}
+.footer-rose{width:80px;height:80px;margin:0 auto 24px;animation:footerRose 4s ease-in-out infinite;filter:drop-shadow(0 0 30px rgba(232,80,122,0.7))}
+@keyframes footerRose{0%,100%{transform:rotate(-5deg) scale(1)}50%{transform:rotate(5deg) scale(1.1)}}
+footer p{font-family:'Playfair Display',serif;font-size:20px;font-style:italic;
+  background:linear-gradient(135deg,#f9c8d5,#e8527a,#d4a843);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+footer small{display:block;margin-top:16px;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.2)}
+
+/* ══ ANIMATIONS ══ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .9s cubic-bezier(.4,0,.2,1),transform .9s cubic-bezier(.4,0,.2,1)}
+.reveal.vis{opacity:1;transform:translateY(0)}
+
+@media(max-width:700px){
+  nav{padding:16px 20px}.nav-links{gap:16px}
+  .gal-grid{grid-template-columns:1fr}
+  .letter-card{padding:40px 24px}
+  #gallery,#reasons{padding:60px 16px}
+  .hero-3d-icons .icon3d{width:48px;height:48px}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ BACKGROUND MUSIC ══ -->
+<audio id="bgMusic" loop preload="auto">
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicToggle" onclick="toggleAudio()">
+  <span id="musicIcon">🎵</span> <span id="musicText">Pause Music</span>
+</button>
+
+<canvas id="particles"></canvas>
+<div id="cur"></div>
+<div id="cur2"></div>
+
+<!-- ══ INTRO ══ -->
+<div id="intro">
+  <svg class="intro-3d-rose" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="rg1" cx="40%" cy="35%" r="65%"><stop offset="0%" stop-color="#ff9eb8"/><stop offset="60%" stop-color="#e8527a"/><stop offset="100%" stop-color="#8b2040"/></radialGradient>
+      <radialGradient id="rg2" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="#ffb8cc"/><stop offset="50%" stop-color="#d94070"/><stop offset="100%" stop-color="#6a1030"/></radialGradient>
+      <radialGradient id="rg3" cx="45%" cy="30%" r="70%"><stop offset="0%" stop-color="#ffd0de"/><stop offset="55%" stop-color="#c83060"/><stop offset="100%" stop-color="#7a1838"/></radialGradient>
+      <radialGradient id="sg" cx="50%" cy="30%" r="70%"><stop offset="0%" stop-color="#80c060"/><stop offset="60%" stop-color="#3a8030"/><stop offset="100%" stop-color="#1a5018"/></radialGradient>
+      <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    </defs>
+    <path d="M70 115 Q65 100 68 85" stroke="#3a8030" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M68 95 Q55 88 50 78 Q60 82 68 90" fill="url(#sg)" opacity="0.9"/>
+    <path d="M68 100 Q80 90 84 80 Q76 86 68 96" fill="url(#sg)" opacity="0.8"/>
+    <ellipse cx="70" cy="58" rx="22" ry="30" fill="url(#rg1)" opacity="0.7" transform="rotate(-30 70 58)"/>
+    <ellipse cx="70" cy="58" rx="22" ry="30" fill="url(#rg2)" opacity="0.7" transform="rotate(30 70 58)"/>
+    <ellipse cx="70" cy="58" rx="20" ry="28" fill="url(#rg1)" opacity="0.75" transform="rotate(-90 70 58)"/>
+    <ellipse cx="70" cy="58" rx="20" ry="28" fill="url(#rg2)" opacity="0.75" transform="rotate(90 70 58)"/>
+    <ellipse cx="70" cy="55" rx="17" ry="24" fill="url(#rg3)" opacity="0.85" transform="rotate(-45 70 55)"/>
+    <ellipse cx="70" cy="55" rx="17" ry="24" fill="url(#rg2)" opacity="0.85" transform="rotate(45 70 55)"/>
+    <ellipse cx="70" cy="55" rx="16" ry="22" fill="url(#rg3)" opacity="0.9" transform="rotate(0 70 55)"/>
+    <ellipse cx="70" cy="55" rx="16" ry="22" fill="url(#rg1)" opacity="0.9" transform="rotate(180 70 55)"/>
+    <circle cx="70" cy="58" r="14" fill="url(#rg2)" filter="url(#glow)"/>
+    <circle cx="70" cy="58" r="9" fill="url(#rg3)"/>
+    <circle cx="67" cy="55" r="4" fill="rgba(255,180,200,0.6)"/>
+  </svg>
+  <h1 class="intro-h">Hey Laaviii! 💕</h1>
+  <p class="intro-s">Your loved one made this for you</p>
+  <button class="intro-cta" onclick="startSite()">✦ Open Your Surprise ✦</button>
+</div>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <span class="nav-logo">Laaviii 🌹</span>
+  <div class="nav-links">
+    <a href="#countdown">Countdown</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#letter">Letter</a>
+    <a href="#reasons">Reasons</a>
+    <a href="#wishes">Wishes</a>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <canvas class="confetti-canvas" id="cc" style="position:absolute;inset:0;pointer-events:none;width:100%;height:100%"></canvas>
+
+  <p class="hero-eyebrow">✦ A Birthday Surprise ✦</p>
+  <h1 class="hero-title">
+    <span class="line1">Happy</span>
+    <span class="line2">Birthday,</span>
+    <span class="hero-name">Laaviii</span>
+  </h1>
+
+  <div class="hero-3d-icons">
+    <svg class="icon3d" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <defs><radialGradient id="hr1" cx="40%" cy="35%" r="65%"><stop offset="0%" stop-color="#ff9eb8"/><stop offset="100%" stop-color="#8b2040"/></radialGradient></defs>
+      <path d="M32 54 Q29 46 31 38" stroke="#3a8030" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M31 44 Q24 40 21 34 Q27 37 31 42" fill="#4a9040" opacity="0.9"/>
+      <ellipse cx="32" cy="28" rx="11" ry="15" fill="url(#hr1)" opacity="0.7" transform="rotate(-30 32 28)"/>
+      <ellipse cx="32" cy="28" rx="11" ry="15" fill="url(#hr1)" opacity="0.7" transform="rotate(30 32 28)"/>
+      <ellipse cx="32" cy="28" rx="10" ry="13" fill="#f4789a" opacity="0.85" transform="rotate(0 32 28)"/>
+      <ellipse cx="32" cy="28" rx="9" ry="12" fill="#e85080" opacity="0.9" transform="rotate(90 32 28)"/>
+      <circle cx="32" cy="28" r="7" fill="#e8527a" filter="url(#glow)"/>
+      <circle cx="30" cy="26" r="3" fill="rgba(255,180,200,0.7)"/>
+    </svg>
+    <svg class="icon3d" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="hh1" cx="35%" cy="30%" r="70%"><stop offset="0%" stop-color="#ff9eb8"/><stop offset="50%" stop-color="#e8527a"/><stop offset="100%" stop-color="#8b1a40"/></radialGradient>
+        <radialGradient id="hh2" cx="35%" cy="30%" r="70%"><stop offset="0%" stop-color="#ffccd8"/><stop offset="100%" stop-color="#c03060"/></radialGradient>
+      </defs>
+      <path d="M32 52 C18 40 8 32 8 22 C8 14 14 8 22 8 C26 8 30 10 32 14 C34 10 38 8 42 8 C50 8 56 14 56 22 C56 32 46 40 32 52Z" fill="url(#hh1)"/>
+      <path d="M32 48 C20 37 11 30 11 21 C11 15 16 10 22 10 C26 10 29 12 32 16 C35 12 38 10 42 10 C48 10 53 15 53 21 C53 30 44 37 32 48Z" fill="url(#hh2)" opacity="0.5"/>
+      <ellipse cx="24" cy="20" rx="6" ry="4" fill="rgba(255,255,255,0.35)" transform="rotate(-20 24 20)"/>
+    </svg>
+    <svg class="icon3d" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <defs><radialGradient id="st1" cx="40%" cy="30%" r="70%"><stop offset="0%" stop-color="#ffe080"/><stop offset="50%" stop-color="#d4a843"/><stop offset="100%" stop-color="#8b6010"/></radialGradient></defs>
+      <path d="M32 6 L38 24 L58 24 L42 36 L48 54 L32 42 L16 54 L22 36 L6 24 L26 24Z" fill="url(#st1)"/>
+      <path d="M32 10 L37 25 L53 25 L40 34 L45 50 L32 41 L19 50 L24 34 L11 25 L27 25Z" fill="#f0c060" opacity="0.4"/>
+      <ellipse cx="26" cy="22" rx="5" ry="3" fill="rgba(255,255,255,0.4)" transform="rotate(-15 26 22)"/>
+    </svg>
+  </div>
+
+  <p class="hero-sub">Today the entire world celebrates the day you came into it — and into my life, my Laaviii.</p>
+  <div class="hero-scroll"><span>scroll</span><div class="hero-scroll-line"></div></div>
+</section>
+
+<!-- ══ COUNTDOWN ══ -->
+<section id="countdown">
+  <div class="cd-glow"></div>
+  <p class="section-tag reveal">✦ The Big Day ✦</p>
+  <h2 class="section-h reveal">Counting Down To You</h2>
+  <div class="cd-grid">
+    <div class="cd-box reveal"><div class="cd-num" id="days">--</div><div class="cd-lbl">Days</div></div>
+    <div class="cd-sep reveal">:</div>
+    <div class="cd-box reveal"><div class="cd-num" id="hours">--</div><div class="cd-lbl">Hours</div></div>
+    <div class="cd-sep reveal">:</div>
+    <div class="cd-box reveal"><div class="cd-num" id="minutes">--</div><div class="cd-lbl">Minutes</div></div>
+    <div class="cd-sep reveal">:</div>
+    <div class="cd-box reveal"><div class="cd-num" id="seconds">--</div><div class="cd-lbl">Seconds</div></div>
+  </div>
+  <p class="bday-msg" id="bm">🎉 Today is YOUR day, Laaviii! Happy Birthday my love! 🎉</p>
+</section>
+
+<!-- ══ GALLERY (EXACTLY 4 PHOTOS WITH CUSTOM CAPTIONS) ══ -->
+<section id="gallery">
+  <p class="section-tag reveal">✦ Our Moments ✦</p>
+  <h2 class="section-h reveal">Every Picture Tells Our Story</h2>
+  <p class="reveal" style="font-family:'Playfair Display',serif;font-style:italic;color:rgba(255,255,255,0.4);font-size:17px;margin-top:-8px">The moments I never want to forget</p>
+  <div class="gal-grid" id="gg">
+    <div class="gal-item reveal" onclick="openLb(this)">
+      <img src="photo1.jpg" alt="Memory 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="gal-ph" style="display:none"><svg class="gal-ph-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span class="gal-ph-txt">Add photo1.jpg</span></div>
+      <div class="gal-overlay"><span class="gal-cap">the first pic 🌹</span></div>
+    </div>
+    <div class="gal-item reveal" onclick="openLb(this)">
+      <img src="photo2.jpg" alt="Memory 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="gal-ph" style="display:none"><svg class="gal-ph-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span class="gal-ph-txt">Add photo2.jpg</span></div>
+      <div class="gal-overlay"><span class="gal-cap">our first selfie ✨</span></div>
+    </div>
+    <div class="gal-item reveal" onclick="openLb(this)">
+      <img src="photo3.jpg" alt="Memory 3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="gal-ph" style="display:none"><svg class="gal-ph-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span class="gal-ph-txt">Add photo3.jpg</span></div>
+      <div class="gal-overlay"><span class="gal-cap">my everything 🌸</span></div>
+    </div>
+    <div class="gal-item reveal" onclick="openLb(this)">
+      <img src="photo4.jpg" alt="Memory 4" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="gal-ph" style="display:none"><svg class="gal-ph-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span class="gal-ph-txt">Add photo4.jpg</span></div>
+      <div class="gal-overlay"><span class="gal-cap">forever memories 🎀</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LIGHTBOX ══ -->
+<div id="lb" onclick="closeLb()">
+  <button class="lb-close" onclick="closeLb()">✕</button>
+  <img id="lbImg" src="" alt="">
+</div>
+
+<!-- ══ LETTER ══ -->
+<section id="letter">
+  <div class="letter-wrap">
+    <p class="section-tag reveal">✦ From My Heart ✦</p>
+    <h2 class="section-h reveal">A Letter For You, Laaviii</h2>
+    <div class="letter-card reveal">
+      <button class="edit-btn" id="editBtn" onclick="toggleEdit()">✏ Edit</button>
+      <div class="letter-body" id="lt">
+        <p>My dearest Laaviii,</p>
+        <p>On this beautiful day, I want you to know just how much you mean to me. You walked into my life and quietly became the best part of it — the kind of person I didn't know I was waiting for.</p>
+        <p>Your smile is my favourite thing in the world. The way you laugh, the way you care, the way you exist — it all makes my heart feel things I never knew were possible.</p>
+        <p>Happy Birthday, my love. I hope this year is as bright and beautiful as you are. You deserve every happiness, every laugh, every dream come true.</p>
+        <p>Always and forever yours,</p>
+      </div>
+      <textarea class="letter-ta" id="lta"></textarea>
+      <button class="save-btn" id="sv" onclick="saveLetter()">Save Letter</button>
+      <div class="letter-sig">Your Jeeee 🌹</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ REASONS ══ -->
+<section id="reasons">
+  <p class="section-tag reveal">✦ My Heart Says ✦</p>
+  <h2 class="section-h reveal">Reasons I Love You</h2>
+  <p class="reveal" style="font-family:'Playfair Display',serif;font-style:italic;color:rgba(255,255,255,0.4);font-size:17px;margin-top:-8px">Every little thing about you, Laaviii...</p>
+  <div class="reasons-grid" id="rg"></div>
+</section>
+
+<!-- ══ WISHES ══ -->
+<section id="wishes">
+  <p class="section-tag reveal">✦ With All My Love ✦</p>
+  <h2 class="section-h reveal">Birthday Wishes</h2>
+  <div class="wishes-card reveal">
+    <svg class="wishes-cake" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="cg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f9c8d5"/><stop offset="100%" stop-color="#e8527a"/></linearGradient>
+        <linearGradient id="cg2" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#ffe0a0"/><stop offset="100%" stop-color="#d4a843"/></linearGradient>
+        <linearGradient id="cg3" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#fff"/><stop offset="100%" stop-color="#f0e0f0"/></linearGradient>
+        <radialGradient id="fg1" cx="50%" cy="20%" r="80%"><stop offset="0%" stop-color="#ffe080"/><stop offset="100%" stop-color="#ff8020"/></radialGradient>
+      </defs>
+      <rect x="10" y="65" width="80" height="26" rx="4" fill="url(#cg1)"/>
+      <rect x="10" y="62" width="80" height="8" rx="3" fill="rgba(255,255,255,0.25)"/>
+      <rect x="20" y="40" width="60" height="26" rx="4" fill="url(#cg2)"/>
+      <rect x="20" y="37" width="60" height="8" rx="3" fill="rgba(255,255,255,0.3)"/>
+      <ellipse cx="30" cy="40" rx="5" ry="4" fill="url(#cg3)" opacity="0.8"/>
+      <ellipse cx="50" cy="38" rx="5" ry="4" fill="url(#cg3)" opacity="0.8"/>
+      <ellipse cx="70" cy="40" rx="5" ry="4" fill="url(#cg3)" opacity="0.8"/>
+      <rect x="36" y="24" width="6" height="16" rx="2" fill="#e870a0"/>
+      <rect x="58" y="24" width="6" height="16" rx="2" fill="#70a0e8"/>
+      <ellipse cx="39" cy="21" rx="3" ry="5" fill="url(#fg1)" opacity="0.95"/>
+      <ellipse cx="39" cy="20" rx="1.5" ry="3" fill="#fff" opacity="0.6"/>
+      <ellipse cx="61" cy="21" rx="3" ry="5" fill="url(#fg1)" opacity="0.95"/>
+      <ellipse cx="61" cy="20" rx="1.5" ry="3" fill="#fff" opacity="0.6"/>
+      <rect x="18" y="70" width="6" height="2" rx="1" fill="#ff80a0" transform="rotate(20 18 70)"/>
+      <rect x="35" y="75" width="6" height="2" rx="1" fill="#80c0ff" transform="rotate(-15 35 75)"/>
+      <rect x="55" y="68" width="6" height="2" rx="1" fill="#ffe080" transform="rotate(30 55 68)"/>
+      <rect x="72" y="73" width="6" height="2" rx="1" fill="#a0e880" transform="rotate(-25 72 73)"/>
+      <rect x="28" y="47" width="5" height="2" rx="1" fill="#ff80a0" transform="rotate(15 28 47)"/>
+      <rect x="60" y="50" width="5" height="2" rx="1" fill="#80c0ff" transform="rotate(-20 60 50)"/>
+    </svg>
+    <p class="wishes-txt">"Laaviii, on your special day I wish you a lifetime of smiles, endless love, and all the happiness your heart can hold. You are my sunshine, my favourite person, and the reason I smile every single day."</p>
+    <p class="wishes-from">— With all my love, Jeeee 💕</p>
+    <div class="wishes-icons">
+      <svg class="w-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="24" cy="22" rx="9" ry="12" fill="#e8527a" opacity="0.75" transform="rotate(-30 24 22)"/>
+        <ellipse cx="24" cy="22" rx="9" ry="12" fill="#c8337a" opacity="0.75" transform="rotate(30 24 22)"/>
+        <ellipse cx="24" cy="22" rx="8" ry="10" fill="#f47090" opacity="0.9" transform="rotate(0 24 22)"/>
+        <circle cx="24" cy="22" r="5" fill="#e8527a"/>
+        <circle cx="22" cy="20" r="2.5" fill="rgba(255,180,200,0.7)"/>
+        <path d="M24 38 Q22 32 23 26" stroke="#3a8030" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+      <svg class="w-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <path d="M24 40C14 30 6 24 6 16C6 10 10 6 16 6C19 6 22 8 24 11C26 8 29 6 32 6C38 6 42 10 42 16C42 24 34 30 24 40Z" fill="#e8527a"/>
+        <path d="M24 36C15 27 8 22 8 15C8 10 12 7 17 7 C20 7 22 9 24 12 C26 9 28 7 31 7 C36 7 40 10 40 15 C40 22 33 27 24 36Z" fill="#f47090" opacity="0.5"/>
+        <ellipse cx="18" cy="15" rx="5" ry="3" fill="rgba(255,255,255,0.35)" transform="rotate(-20 18 15)"/>
+      </svg>
+      <svg class="w-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <path d="M24 4 L28.5 17 L43 17 L31.5 26 L36 39 L24 30 L12 39 L16.5 26 L5 17 L19.5 17Z" fill="#d4a843"/>
+        <path d="M24 7 L27.5 18 L39 18 L30 25 L33.5 37 L24 30.5 L14.5 37 L18 25 L9 18 L20.5 18Z" fill="#f0c060" opacity="0.45"/>
+        <ellipse cx="20" cy="15" rx="4" ry="2.5" fill="rgba(255,255,255,0.4)" transform="rotate(-15 20 15)"/>
+      </svg>
+      <svg class="w-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <path d="M24 4 L26 20 L42 22 L26 24 L24 40 L22 24 L6 22 L22 20Z" fill="#f0c060"/>
+        <path d="M24 8 L25.5 20 L38 21.5 L25.5 23 L24 36 L22.5 23 L10 21.5 L22.5 20Z" fill="#fff" opacity="0.4"/>
+        <path d="M38 6 L39 12 L45 13 L39 14 L38 20 L37 14 L31 13 L37 12Z" fill="#ffe080" opacity="0.8"/>
+        <path d="M8 32 L9 36 L13 37 L9 38 L8 42 L7 38 L3 37 L7 36Z" fill="#f9c8d5" opacity="0.8"/>
+      </svg>
+      <svg class="w-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <rect x="6" y="22" width="36" height="22" rx="3" fill="#e8527a"/>
+        <rect x="6" y="22" width="36" height="7" rx="2" fill="#c83060"/>
+        <rect x="20" y="22" width="8" height="22" fill="rgba(255,255,255,0.25)"/>
+        <rect x="6" y="25" width="36" height="2" fill="rgba(255,255,255,0.15)"/>
+        <path d="M24 22 Q18 14 12 12 Q16 18 24 22Z" fill="#d4a843"/>
+        <path d="M24 22 Q30 14 36 12 Q32 18 24 22Z" fill="#f0c060"/>
+        <ellipse cx="24" cy="22" rx="4" ry="3" fill="#f0c060"/>
+        <circle cx="24" cy="22" r="2" fill="#d4a843"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <svg class="footer-rose" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+    <defs><radialGradient id="fr1" cx="40%" cy="35%" r="65%"><stop offset="0%" stop-color="#ff9eb8"/><stop offset="60%" stop-color="#e8527a"/><stop offset="100%" stop-color="#6a1030"/></radialGradient></defs>
+    <path d="M40 68 Q37 58 39 48" stroke="#3a8030" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M39 56 Q30 50 26 42 Q33 46 39 52" fill="#4a9040"/>
+    <ellipse cx="40" cy="34" rx="13" ry="18" fill="url(#fr1)" opacity="0.7" transform="rotate(-30 40 34)"/>
+    <ellipse cx="40" cy="34" rx="13" ry="18" fill="url(#fr1)" opacity="0.7" transform="rotate(30 40 34)"/>
+    <ellipse cx="40" cy="34" rx="11" ry="15" fill="#f4789a" opacity="0.85" transform="rotate(0 40 34)"/>
+    <ellipse cx="40" cy="34" rx="10" ry="14" fill="#e85080" opacity="0.9" transform="rotate(90 40 34)"/>
+    <circle cx="40" cy="34" r="8" fill="#e8527a"/>
+    <circle cx="37" cy="31" r="4" fill="rgba(255,180,200,0.6)"/>
+  </svg>
+  <p>"You are my today and all of my tomorrows, Laaviii."</p>
+  <small>Made with ♥ by Jeeee, just for you</small>
+</footer>
+
+<script>
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// TARGET BIRTHDAY: July 28, 2026
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+const BIRTHDAY = new Date('2026-07-28T00:00:00');
+
+const REASONS = [
+  {
+    title: "1. Nin nagu 🫠",
+    text: "nin nagtha iddre yeno onthara chanda nin mukdhalli aa nagu yavaglu irli 🫶🏻🙌🏼"
+  },
+  {
+    title: "2. Nin kannu 👀",
+    text: "aa nin kannalli preethi mugdhathe yedd kaanuttey aa nin kan nodtha iddre yest chinthe idru marso ast shakthi ide i should thank god for blessing you with those beautiful eyes 🙈🤧"
+  },
+  {
+    title: "3. Nin maathu 😉",
+    text: "Gini thara maathahdthya yest soothing gotta nin voice ufff yeste kopa iddru nin voice keludre kargogthini"
+  },
+  {
+    title: "4. Nin height 🫂",
+    text: "nin height yest chanda gotta olle put magu thara kaansthya nang nin height istaa aadre regsthini"
+  },
+  {
+    title: "5. Nin love and care 💗",
+    text: "nanna yest preethi maadhtya yest care maadthya nan amma thara nija naan thumba adrusta maadidhini nin antha henn sigoke"
+  }
+];
+
+// ── AUDIO CONTROLS ──
+const bgAudio = document.getElementById('bgMusic');
+
+function startSite(){
+  document.getElementById('intro').classList.add('gone');
+  launchConfetti();
+  
+  if (bgAudio) {
+    bgAudio.play().catch(err => {
+      console.log("Audio playback waiting for manual toggle:", err);
+    });
+  }
+}
+
+function toggleAudio() {
+  const icon = document.getElementById('musicIcon');
+  const text = document.getElementById('musicText');
+  
+  if (bgAudio.paused) {
+    bgAudio.play();
+    icon.textContent = '🎵';
+    text.textContent = 'Pause Music';
+  } else {
+    bgAudio.pause();
+    icon.textContent = '🔇';
+    text.textContent = 'Play Music';
+  }
+}
+
+// ── CURSOR ──
+const cur=document.getElementById('cur'),cur2=document.getElementById('cur2');
+let mx=0,my=0,cx=0,cy=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX;my=e.clientY;
+  cur.style.left=mx+'px';cur.style.top=my+'px';
+});
+(function moveCur2(){
+  cx+=(mx-cx)*0.12;cy+=(my-cy)*0.12;
+  cur2.style.left=cx+'px';cur2.style.top=cy+'px';
+  requestAnimationFrame(moveCur2);
+})();
+
+// ── CLICK BURSTS ──
+const burstSVGs=['<svg width="40" height="40" viewBox="0 0 40 40"><path d="M20 36C11 27 4 21 4 14C4 9 8 5 13 5C16 5 18 7 20 10C22 7 24 5 27 5C32 5 36 9 36 14C36 21 29 27 20 36Z" fill="#e8527a"/><ellipse cx="14" cy="13" rx="4" ry="2.5" fill="rgba(255,255,255,0.4)" transform="rotate(-20 14 13)"/></svg>',
+'<svg width="36" height="36" viewBox="0 0 36 36"><path d="M18 3 L21 13 L32 13 L23.5 19.5 L26.5 30 L18 23.5 L9.5 30 L12.5 19.5 L4 13 L15 13Z" fill="#d4a843"/><ellipse cx="14" cy="12" rx="3" ry="2" fill="rgba(255,255,255,0.4)" transform="rotate(-15 14 12)"/></svg>',
+'<svg width="32" height="32" viewBox="0 0 32 32"><ellipse cx="16" cy="16" rx="9" ry="12" fill="#e8527a" opacity="0.7" transform="rotate(-30 16 16)"/><ellipse cx="16" cy="16" rx="9" ry="12" fill="#c8337a" opacity="0.7" transform="rotate(30 16 16)"/><circle cx="16" cy="16" r="5" fill="#f47090"/><circle cx="14" cy="14" r="2.5" fill="rgba(255,180,200,0.6)"/></svg>'];
+document.addEventListener('click',e=>{
+  if(e.target.closest('#intro,button,a,label,textarea,input'))return;
+  const d=document.createElement('div');
+  d.className='burst';d.style.left=e.clientX+'px';d.style.top=e.clientY+'px';
+  d.innerHTML=burstSVGs[Math.floor(Math.random()*burstSVGs.length)];
+  document.body.appendChild(d);
+  setTimeout(()=>d.remove(),900);
+});
+
+// ── PARTICLES ──
+const pc=document.getElementById('particles'),pctx=pc.getContext('2d');
+let pts=[];
+function initParts(){
+  pc.width=window.innerWidth;pc.height=window.innerHeight;
+  pts=[];
+  for(let i=0;i<80;i++){pts.push({x:Math.random()*pc.width,y:Math.random()*pc.height,r:Math.random()*1.5+0.3,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,a:Math.random(),da:Math.random()*.008+.003,c:Math.random()<.6?`rgba(200,99,122,`:`rgba(212,168,67,`})}
+}
+initParts();
+window.addEventListener('resize',initParts);
+(function animParts(){
+  pctx.clearRect(0,0,pc.width,pc.height);
+  pts.forEach(p=>{
+    p.a+=p.da;if(p.a>1||p.a<0)p.da*=-1;
+    p.x+=p.vx;p.y+=p.vy;
+    if(p.x<0)p.x=pc.width;if(p.x>pc.width)p.x=0;
+    if(p.y<0)p.y=pc.height;if(p.y>pc.height)p.y=0;
+    pctx.beginPath();pctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    pctx.fillStyle=p.c+p.a*0.6+')';pctx.fill();
+  });
+  requestAnimationFrame(animParts);
+})();
+
+// ── CONFETTI ──
+function launchConfetti(){
+  const cv=document.getElementById('cc'),ctx=cv.getContext('2d');
+  cv.width=cv.offsetWidth;cv.height=cv.offsetHeight;
+  const ps=[],cols=['#c8637a','#e8a0b0','#f9c8d5','#d4a843','#f0c060','#fff','#e8527a'];
+  for(let i=0;i<150;i++)ps.push({x:Math.random()*cv.width,y:Math.random()*cv.height-cv.height,w:5+Math.random()*9,h:3+Math.random()*7,c:cols[Math.floor(Math.random()*cols.length)],s:2+Math.random()*4,sp:Math.random()*.2-.1,a:Math.random()*360,d:Math.random()*2-1,o:.7+Math.random()*.3});
+  let f=0;
+  (function dc(){
+    ctx.clearRect(0,0,cv.width,cv.height);
+    ps.forEach(p=>{ctx.save();ctx.globalAlpha=p.o;ctx.translate(p.x,p.y);ctx.rotate(p.a*Math.PI/180);ctx.fillStyle=p.c;ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);ctx.restore();p.y+=p.s;p.x+=p.d;p.a+=p.sp*10;if(p.y>cv.height+20){p.y=-10;p.x=Math.random()*cv.width}});
+    f++;if(f<360)requestAnimationFrame(dc);else ctx.clearRect(0,0,cv.width,cv.height);
+  })();
+}
+
+// ── COUNTDOWN ──
+const pv={};
+function updateCD(){
+  const now=new Date();
+  const diff=BIRTHDAY-now;
+  if(diff<=0){['days','hours','minutes','seconds'].forEach(id=>document.getElementById(id).textContent='00');document.getElementById('bm').style.display='block';launchConfetti();return;}
+  const v={days:String(Math.floor(diff/86400000)).padStart(2,'0'),hours:String(Math.floor((diff%86400000)/3600000)).padStart(2,'0'),minutes:String(Math.floor((diff%3600000)/60000)).padStart(2,'0'),seconds:String(Math.floor((diff%60000)/1000)).padStart(2,'0')};
+  Object.entries(v).forEach(([id,val])=>{const el=document.getElementById(id);if(pv[id]!==val){el.textContent=val;el.classList.remove('bump');void el.offsetWidth;el.classList.add('bump');pv[id]=val;}});
+}
+setInterval(updateCD,1000);updateCD();
+
+// ── GALLERY LOAD & LIGHTBOX ──
+const caps=['the first pic 🌹','our first selfie ✨','my everything 🌸','forever memories 🎀'];
+
+function loadSavedPhotos() {
+  const items = document.querySelectorAll('.gal-item');
+  items.forEach((item, i) => {
+    const savedData = localStorage.getItem(`laaviii_pic_${i}`);
+    if (savedData) {
+      item.innerHTML = `<img src="${savedData}" alt="Memory"><div class="gal-overlay"><span class="gal-cap">${caps[i]}</span></div>`;
+    }
+  });
+}
+
+function openLb(item){const img=item.querySelector('img');if(!img||img.style.display==='none')return;document.getElementById('lbImg').src=img.src;document.getElementById('lb').classList.add('open');}
+function closeLb(){document.getElementById('lb').classList.remove('open');}
+
+// ── LETTER ──
+function toggleEdit(){
+  const lt=document.getElementById('lt'),lta=document.getElementById('lta'),btn=document.getElementById('editBtn'),sv=document.getElementById('sv');
+  if(!lta.style.display||lta.style.display==='none'){lta.value=lt.innerText;lt.style.display='none';lta.style.display='block';sv.style.display='inline-block';btn.textContent='✕ Cancel';}
+  else{lt.style.display='block';lta.style.display='none';sv.style.display='none';btn.textContent='✏ Edit';}
+}
+function saveLetter(){
+  const lta=document.getElementById('lta'),lt=document.getElementById('lt');
+  lt.innerHTML=lta.value.split('\n').map(l=>l?`<p>${l}</p>`:'').join('');
+  lt.style.display='block';lta.style.display='none';document.getElementById('sv').style.display='none';document.getElementById('editBtn').textContent='✏ Edit';
+}
+
+// ── REASONS GENERATION ──
+const rg=document.getElementById('rg');
+REASONS.forEach((r,i)=>{
+  const c=document.createElement('div');c.className='r-card reveal';
+  c.innerHTML=`
+    <div class="r-num">${String(i+1).padStart(2,'0')}</div>
+    <div class="r-title-custom">${r.title}</div>
+    <div class="r-txt">${r.text}</div>
+  `;
+  rg.appendChild(c);
+});
+
+// ── SCROLL REVEAL ──
+const obs=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('vis'),i*80);obs.unobserve(e.target);}});},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Run load on initialization
+window.addEventListener('DOMContentLoaded', loadSavedPhotos);
+</script>
+</body>
+</html>
